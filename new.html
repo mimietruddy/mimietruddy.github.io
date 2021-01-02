@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App Assignment</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body class="cream lighten-2">
+  <header id="navigation">
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="#" class="brand-logo">Blog App</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li> <a class="waves-effect teal  btn modal-trigger" href="#new-item">New Blog<i
+                class="material-icons right">add</i></a></li>
+                <li><a id="logout" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- authentication component -->
+    <div class="row" id="authentication">
+      <div class="col s12 m6 l6 offset-m3 offset-l3 blue-grey pink-text">
+        <ul class="tabs blue-grey pink-text">
+          <li class="tab col s3"><a href="#login" class="pink-text">Login</a></li>
+          <li class="tab col s3"><a href="#signup" class="pink-text">Signup</a></li>
+        </ul>
+      </div>
+      <div id="login" class="col s12">
+        <!-- login form -->
+        <div class="row">
+          <form class="col s12 m6 l6 offset-m3 offset-l3" id="loginform" method="POST">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="login_username" type="text" class="validate">
+                <label for="login_username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input id="login_email" type="email" class="validate">
+                  <label for="login_email">Email</label>
+                </div>
+  
+              </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="login_password" type="password" class="validate">
+                <label for="login_password">Password</label>
+              </div>
+
+            </div>
+            <div class="col s12 red-text" id="lname_error">
+            </div>
+            <input type="submit" value="Login" class="btn btn-teal" />
+            <p>By logging in you agree to our <a href="#">Terms & Privacy</a></p>
+
+          </form>
+        </div>
+      </div>
+      <div id="signup" class="col s12">
+        <!-- signup form -->
+        <div class="row">
+          <form class="col s12 m6 l6 offset-m3 offset-l3" id="signupform" method="POST">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="signup_username" type="text" class="validate">
+                <label for="signup_username">Username</label>
+              </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input id="signup_email" type="email" class="validate">
+                  <label for="signup_email">Email</label>
+                </div>
+              </div> 
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="signup_password" type="password" class="validate">
+                <label for="signup_password">Password</label>
+              </div>
+            </div>
+            <div class="col s12 red-text" id="sname_error">
+            </div>
+            <div class="col s12 green-text" id="success">
+            </div>
+            <input type="submit" value="Signup" class="btn btn-teal" />
+            <p>By Signing up you agree to our <a href="#">Terms & Privacy</a></p>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- logged in intro -->
+    <div class="container" id="intro">
+      <h3 class="center"><a class="waves-effect teal  btn modal-trigger" href="#new-item">New Blog<i
+            class="material-icons right">add</i></a></h3>
+      <p id="no-items" class="flow-text center">Welcome! Add your first blog</p>
+    </div>
+
+    <div class="row blog-container"></div>
+
+    <!-- Modal Structure -->
+    <div id="new-item" class="modal">
+      <div class="modal-content">
+        <h4 class="center">Add Blog post</h4>
+        <div class="row">
+          <form class="col s12" id="blogaddform" method="POST">
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="blog title" id="title" type="text" class="validate">
+                <label for="title">Title</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="blog-content" class="materialize-textarea"></textarea>
+                <label for="blog-content">Content</label>
+              </div>
+            </div>
+            <button type="submit" class=" save-btn waves-effect waves-green btn btn-teal">save <i
+                class="material-icons right">check_circle</i></button>
+            <button type="reset" class=" cancel-btn red btn btn-small">Cancel <i
+                class="material-icons right">cancel</i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- edit modal -->
+    <!-- Modal Structure -->
+    <div id="edit-item" class="modal">
+      <div class="modal-content">
+        <h4 class="center">Edit Blog Post</h4>
+        <div class="row">
+          <form class="col s12" id="blogeditform" method="POST">
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="blog title" id="edit-title" type="text" class="validate">
+                <label for="edit-title">Title</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="edit-blog-content" class="materialize-textarea"></textarea>
+                <label for="blog-content">Content</label>
+              </div>
+            </div>
+            <button type="submit" class="edit-btn waves-effect waves-green btn btn-teal">save <i
+                class="material-icons right">check_circle</i></button>
+            <button type="reset" class=" cancel-btn red btn btn-small">Cancel <i
+                class="material-icons right">cancel</i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="content/js/index.js"></script>
+  <script src="content/js/addBlog.js"></script>
+  <script src="content/js/editBlog.js"></script>
+  <script src="content/js/authantication.js"></script>
+</body>
+
+</html>
